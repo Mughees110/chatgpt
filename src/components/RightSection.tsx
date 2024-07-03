@@ -255,6 +255,7 @@ const RightSection: React.FC<RightSectionProps> = ({ selectedSessionId }) => {
       )}
 
       <br />
+      <br />
     </div>
   );
 };
