@@ -200,7 +200,7 @@ const RightSection: React.FC<RightSectionProps> = ({ selectedSessionId }) => {
                   ) : (
                     <span>
                       <img
-                        src="/logo.jpg"
+                        src="/usl.jpg"
                         alt="Logo"
                         style={{ width: "30px", marginLeft: "5px" }}
                       />
