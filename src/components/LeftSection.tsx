@@ -147,14 +147,19 @@ const LeftSection: React.FC<LeftSectionProps> = ({
     <div className={`left-section ${isOpen ? "open" : ""}`}>
       <div className="sessions" style={{ paddingLeft: "" }}>
         <div className="header">
-          <span onClick={createSession}>دردشة جديدة</span>
+          <button
+            style={{ border: "none", fontWeight: "bold" }}
+            onClick={createSession}
+          >
+            دردشة جديدة
+          </button>
           &nbsp;
           <span>
             <img src="/logo.jpg" alt="Logo" style={{ width: "50px" }} />
           </span>
         </div>
         <div className="session-category">
-          <h3>اليوم</h3>
+          <h5 style={{ color: "grey" }}>اليوم</h5>
           {paginatedResult.today.map((session) => (
             <div
               key={session._id}
@@ -170,7 +175,7 @@ const LeftSection: React.FC<LeftSectionProps> = ({
           ))}
         </div>
         <div className="session-category">
-          <h3>أمس</h3>
+          <h5 style={{ color: "grey" }}>أمس</h5>
           {paginatedResult.yesterday.map((session) => (
             <div
               key={session._id}
@@ -182,7 +187,7 @@ const LeftSection: React.FC<LeftSectionProps> = ({
           ))}
         </div>
         <div className="session-category">
-          <h3>اخر 7 ايام</h3>
+          <h5 style={{ color: "grey" }}>اخر 7 ايام</h5>
           {paginatedResult.last7Days.map((session) => (
             <div
               key={session._id}
@@ -195,7 +200,7 @@ const LeftSection: React.FC<LeftSectionProps> = ({
         </div>
         {Object.keys(paginatedResult.older).map((monthYear) => (
           <div key={monthYear} className="session-category">
-            <h3>{monthYear}</h3>
+            <h5 style={{ color: "grey" }}>{monthYear}</h5>
             {paginatedResult.older[monthYear].map((session) => (
               <div
                 key={session._id}

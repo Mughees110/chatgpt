@@ -170,31 +170,60 @@ const RightSection: React.FC<RightSectionProps> = ({ selectedSessionId }) => {
           </div>
         ) : (
           messages.map((message, index) => (
-            <div
-              key={message._id ?? index}
-              className={`content-item ${
-                message.type === "user" ? "user-message" : "fake-response"
-              } ${index === messages.length - 1 ? "typing1" : ""}`}
-              style={{ textAlign: message.type === "user" ? "right" : "right" }}
-            >
-              {message.type === "user" ? (
-                <>
-                  <span style={{ textAlign: "right" }}>You</span>{" "}
-                  {/* Assuming "You:" should be displayed for user messages */}
-                  <br />
-                  {message.text}
-                </>
-              ) : (
-                <>
-                  <span style={{ textAlign: "right" }}>Modon GPT</span>{" "}
-                  <span>
-                    <img src="/logo.jpg" alt="Logo" style={{ width: "30px" }} />
+            <div key={message._id ?? index} style={{ textAlign: "right" }}>
+              <br></br>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-end",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "flex-end",
+                  }}
+                >
+                  <span style={{ marginRight: "5px", fontWeight: "bold" }}>
+                    {message.type === "user" ? "أنت" : "Modon GPT"}
                   </span>
-                  {/* Assuming "Admin:" should be displayed for admin messages */}
-                  <br />
-                  {message.text}
-                </>
-              )}
+                  {message.type !== "user" ? (
+                    <span>
+                      <img
+                        src="/logo.jpg"
+                        alt="Logo"
+                        style={{ width: "30px", marginLeft: "5px" }}
+                      />
+                    </span>
+                  ) : (
+                    <span>
+                      <img
+                        src="/logo.jpg"
+                        alt="Logo"
+                        style={{ width: "30px", marginLeft: "5px" }}
+                      />
+                    </span>
+                  )}
+                </div>
+                <div
+                  style={{
+                    textAlign: "left",
+                    marginRight: "30px",
+                  }}
+                  className={`content-item ${
+                    message.type === "user" ? "user-message" : "fake-response"
+                  } ${index === messages.length - 1 ? "typing1" : ""}`}
+                >
+                  {message.text.split("\n").map((text, i) => (
+                    <span key={i}>
+                      {text}
+                      <br />
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           ))
         )}
