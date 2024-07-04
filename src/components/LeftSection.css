@@ -1,8 +1,8 @@
 /* src/components/LeftSection.css */
 
 .left-section {
-  width: 20%;
-  background-color: #f4f4f4;
+  width: 22%;
+  background-color: #f9f9f9;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -25,10 +25,46 @@
   flex: 1;
   text-align: right;
   overflow-y: auto;
-  padding-top: 20px;
-  padding-right: 20px; /* Adjust padding to create space below the header */
+  padding: 0 0.75rem;
+  direction: rtl; /* Adjust padding to create space below the header */
 }
-.google-button{
+
+.session-sub-item {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.bottom-container {
+  padding: 0.5rem 1.5rem;
+}
+
+.email-text {
+  text-align: center;
+}
+
+.time {
+  color: #7d7d7d;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 600;
+  padding: 0.5rem;
+  margin: 0;
+}
+
+.load-more {
+  padding: 0.5rem;
+  margin: 0;
+  cursor: pointer;
+}
+
+.load-more-text {
+  margin: 0;
+}
+
+.google-button {
   text-align: center;
 }
 
@@ -36,14 +72,39 @@
   padding: 10px;
   border-bottom: 1px solid #ddd;
 }
-.header{
-  text-align: right;
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
 }
+
+.logout-button {
+}
+
+.icon-header {
+  display: flex;
+  align-items: center;
+}
+.icon-md {
+  flex-shrink: 0;
+  height: 18px;
+  width: 18px;
+  cursor: pointer;
+}
+
+.logo-span {
+  text-align: center;
+}
+
+.session-item {
+  color: #0d0d0d;
+  cursor: pointer;
+}
+
 .session-item:hover {
-  color: white;
-  background-color: lightgrey;
-  border-radius: 30px;
-  padding: 5px;
+  background-color: #ececec;
+  border-radius: 0.5rem;
 }
 
 /* Media query for smaller screens */

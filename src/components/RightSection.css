@@ -1,18 +1,15 @@
-
-
 .right-section {
-  width: 80%;
-  margin-right: 20%;
+  padding: 0 16rem;
+  width: 100%;
+  margin-right: 22%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   height: 100vh;
   overflow: hidden;
-  padding-left: 100px;
-  padding-right: 100px;
+  margin-top: 3rem;
 }
 .logout-button {
-  position: absolute;
   top: 10px;
   left: 10px;
   background-color: lightblue;
@@ -22,6 +19,17 @@
   cursor: pointer;
   font-size: 16px;
   border-radius: 5px;
+  width: 100%;
+}
+
+.form-container {
+  margin-bottom: 3rem;
+}
+
+.bottom-information-text {
+  text-align: center;
+  font-size: 0.75rem;
+  color: #7d7d7d;
 }
 
 .logout-button:hover {
@@ -60,13 +68,19 @@
   margin: 5px 10px;
 }
 
+.icon-2xl {
+  stroke-width: 1.5;
+  flex-shrink: 0;
+  height: 2rem;
+  width: 2rem;
+}
+
 .input-field {
   display: flex;
   align-items: center;
   padding: 10px;
-  background-color: #f4f4f4;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 20px;
+  background-color: rgba(244, 244, 244, 1);
+  border-radius: 26px;
   margin-top: 20px;
 }
 
@@ -89,18 +103,22 @@
 }
 
 .input-field button {
-  padding: 10px 20px;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-left: 10px;
   border: none;
   border-radius: 20px;
-  background-color: #007bff;
+  background-color: rgba(0, 0, 0, 1);
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .input-field button:hover {
-  background-color: #0056b3;
+  opacity: 0.7;
 }
 
 @media (max-width: 768px) {
@@ -109,7 +127,7 @@
     margin-left: 0;
     padding: 10px;
   }
-  .logout-button{
+  .logout-button {
     visibility: hidden;
   }
 }

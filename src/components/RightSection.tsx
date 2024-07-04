@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, KeyboardEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import "./RightSection.css";
 
@@ -32,12 +32,17 @@ const RightSection: React.FC<RightSectionProps> = ({ selectedSessionId }) => {
     }
   };
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (
+    event: React.FormEvent<HTMLFormElement> | KeyboardEvent<HTMLTextAreaElement>
+  ) => {
     event.preventDefault();
 
     if (inputText.trim() !== "" && selectedSessionId) {
       const userMessage = inputText.trim();
       setInputText("");
+      if (textareaRef.current) {
+        textareaRef.current.style.height = "17px"; // Reset height
+      }
 
       try {
         const response = await fetch("http://localhost:5000/api/messages", {
@@ -141,6 +146,32 @@ const RightSection: React.FC<RightSectionProps> = ({ selectedSessionId }) => {
     fetchMessages();
   }, [selectedSessionId]);
 
+  const handleKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
+    if (event.key === "Enter") {
+      if (event.shiftKey) {
+        // If Shift + Enter is pressed, add a new line
+        const { selectionStart, selectionEnd, value } = event.currentTarget;
+        const newValue =
+          value.substring(0, selectionStart) +
+          "\n" +
+          value.substring(selectionEnd);
+        setInputText(newValue);
+
+        // Move cursor to the correct position after inserting the new line
+        setTimeout(() => {
+          if (textareaRef.current) {
+            textareaRef.current.selectionStart =
+              textareaRef.current.selectionEnd = selectionStart + 1;
+          }
+        }, 0);
+      } else {
+        // If only Enter is pressed, submit the form
+        event.preventDefault();
+        handleSubmit(event);
+      }
+    }
+  };
+
   useEffect(() => {
     if (scrollableContentRef.current) {
       scrollableContentRef.current.scrollTop =
@@ -150,9 +181,9 @@ const RightSection: React.FC<RightSectionProps> = ({ selectedSessionId }) => {
 
   return (
     <div className="right-section">
-      <button className="logout-button" onClick={handleLogout}>
+      {/* <button className="logout-button" onClick={handleLogout}>
         Logout
-      </button>
+      </button> */}
       <div className="scrollable-content" ref={scrollableContentRef}>
         {messages.length === 0 ? (
           <div
@@ -234,28 +265,47 @@ const RightSection: React.FC<RightSectionProps> = ({ selectedSessionId }) => {
         )}
       </div>
       {selectedSessionId && (
-        <form className="input-field" onSubmit={handleSubmit}>
-          <textarea
-            ref={textareaRef}
-            placeholder="اكتب رسالتك هنا ...."
-            value={inputText}
-            onChange={handleInputChange}
-            rows={1}
-            style={{
-              minHeight: "15px",
-              maxHeight: "100px",
-              overflowY: "auto",
-              resize: "none",
-              textAlign: "right", // Align text to the right
-              direction: "rtl", // Set direction to right-to-left
-            }}
-          />
-          <button type="submit">يرسل</button>
-        </form>
+        <div className="form-container">
+          <form className="input-field" onSubmit={handleSubmit}>
+            <button type="submit">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                fill="none"
+                viewBox="0 0 32 32"
+                className="icon-2xl"
+              >
+                <path
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                  d="M15.192 8.906a1.143 1.143 0 0 1 1.616 0l5.143 5.143a1.143 1.143 0 0 1-1.616 1.616l-3.192-3.192v9.813a1.143 1.143 0 0 1-2.286 0v-9.813l-3.192 3.192a1.143 1.143 0 1 1-1.616-1.616z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </button>
+            <textarea
+              ref={textareaRef}
+              placeholder="اكتب رسالتك هنا ...."
+              value={inputText}
+              onKeyDown={handleKeyDown}
+              onChange={handleInputChange}
+              rows={1}
+              style={{
+                minHeight: "15px",
+                maxHeight: "100px",
+                overflowY: "auto",
+                resize: "none",
+                textAlign: "right", // Align text to the right
+                direction: "rtl", // Set direction to right-to-left
+              }}
+            />
+          </form>
+          <p className="bottom-information-text">
+            يمكن أن ترتكب "مدن" الأخطاء. تحقق من المعلومات الهامة.
+          </p>
+        </div>
       )}
-
-      <br />
-      <br />
     </div>
   );
 };
