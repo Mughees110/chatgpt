@@ -195,38 +195,46 @@ const LeftSection: React.FC<LeftSectionProps> = ({
               )
           )}
         </div>
-        <div className="session-category">
-          <h5 className="time">أمس</h5>
-          {paginatedResult.yesterday.map(
-            (session) =>
-              session.message && (
-                <div
-                  key={session._id}
-                  className="session-item noto-nastaliq-urdu-chatgpt"
-                  onClick={() => setSelectedSessionId(session._id)}
-                >
-                  <div className="session-sub-item">{session.message}</div>
-                </div>
-              )
-          )}
-        </div>
-        <div className="session-category">
-          <h5 className="time">اخر 7 ايام</h5>
-          {paginatedResult.last7Days.map(
-            (session) =>
-              session.message && (
-                <div
-                  key={session._id}
-                  className="session-item noto-nastaliq-urdu-chatgpt"
-                  onClick={() => setSelectedSessionId(session._id)}
-                >
-                  <div className="session-sub-item noto-nastaliq-urdu-chatgpt">
-                    {session.message}
+        {paginatedResult.yesterday.length ? (
+          <div className="session-category" style={{ marginTop: "1rem" }}>
+            <h5 className="time">أمس</h5>
+            {paginatedResult.yesterday.map(
+              (session) =>
+                session.message && (
+                  <div
+                    key={session._id}
+                    className="session-item noto-nastaliq-urdu-chatgpt"
+                    onClick={() => setSelectedSessionId(session._id)}
+                  >
+                    <div className="session-sub-item">{session.message}</div>
                   </div>
-                </div>
-              )
-          )}
-        </div>
+                )
+            )}
+          </div>
+        ) : (
+          ""
+        )}
+        {paginatedResult.last7Days.length ? (
+          <div className="session-category" style={{ marginTop: "1rem" }}>
+            <h5 className="time">اخر 7 ايام</h5>
+            {paginatedResult.last7Days.map(
+              (session) =>
+                session.message && (
+                  <div
+                    key={session._id}
+                    className="session-item noto-nastaliq-urdu-chatgpt"
+                    onClick={() => setSelectedSessionId(session._id)}
+                  >
+                    <div className="session-sub-item noto-nastaliq-urdu-chatgpt">
+                      {session.message}
+                    </div>
+                  </div>
+                )
+            )}
+          </div>
+        ) : (
+          ""
+        )}
         {Object.keys(paginatedResult.older).map((monthYear) => (
           <div key={monthYear} className="session-category">
             <h5 className="time">{monthYear}</h5>

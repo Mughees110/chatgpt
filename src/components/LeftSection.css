@@ -91,6 +91,12 @@
   height: 18px;
   width: 18px;
   cursor: pointer;
+  padding: 0.5rem;
+}
+
+.icon-md:hover {
+  border-radius: 0.5rem;
+  background: #ececec;
 }
 
 .logo-span {
@@ -112,6 +118,10 @@
   .left-section {
     width: 0;
     overflow: hidden;
+  }
+
+  .right-section {
+    margin-right: 22%;
   }
 
   .left-section.open {

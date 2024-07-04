@@ -1,11 +1,11 @@
 .right-section {
-  padding: 0 16rem;
+  padding: 0;
+  direction: rtl;
   width: 100%;
   margin-right: 22%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 100vh;
   overflow: hidden;
   margin-top: 3rem;
 }
@@ -23,7 +23,8 @@
 }
 
 .form-container {
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
+  padding: 0 10rem;
 }
 
 .bottom-information-text {
@@ -38,6 +39,7 @@
 .scrollable-content {
   flex-grow: 1;
   overflow-y: auto;
+  justify-content: center;
   padding: 20px;
   background-color: #fff;
   display: flex;
@@ -51,21 +53,21 @@
 }
 
 .user-message {
-  align-self: flex-end;
+  align-self: flex-start;
   background-color: #f4f4f4;
   border-bottom: none;
   border-radius: 20px;
   padding: 10px;
-  margin: 5px 10px;
+  margin: 5px 0px;
 }
 
 .fake-response {
   background-color: white;
-  align-self: flex-end;
+  align-self: flex-start;
   border-bottom: none;
   border-radius: 20px;
   padding: 10px;
-  margin: 5px 10px;
+  margin: 5px 0px;
 }
 
 .icon-2xl {
@@ -124,10 +126,13 @@
 @media (max-width: 768px) {
   .right-section {
     width: 100%;
-    margin-left: 0;
+    margin-right: 0;
     padding: 10px;
   }
-  .logout-button {
-    visibility: hidden;
+  .form-container {
+    padding: 0 !important;
+  }
+  .message-container {
+    padding: 0 !important;
   }
 }

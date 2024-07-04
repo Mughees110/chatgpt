@@ -84,7 +84,8 @@ const RightSection: React.FC<RightSectionProps> = ({ selectedSessionId }) => {
         ]);
         setLoading(true);
 
-        const fakeResponse = "This is a fake response.";
+        const fakeResponse =
+          "يمكن أن ترتكب  الأخطاء. تحقق من المعلومات الهامة. يمكن أن ترتكب  الأخطاء. تحقق من المعلومات الهامة.";
 
         const response2 = await fetch("http://localhost:5000/api/messages", {
           method: "POST",
@@ -191,23 +192,24 @@ const RightSection: React.FC<RightSectionProps> = ({ selectedSessionId }) => {
             style={{
               textAlign: "center",
               alignItems: "center",
-              marginTop: "20%",
               fontSize: "50px",
             }}
           >
-            <img src="/logo.jpg" alt="Logo" style={{ width: "100px" }} />
-            <br></br>
-            MODON
+            <img src="/logo.jpg" alt="Logo" style={{ width: "200px" }} />
           </div>
         ) : (
           messages.map((message, index) => (
-            <div key={message._id ?? index} style={{ textAlign: "right" }}>
+            <div
+              className="message-container"
+              key={message._id ?? index}
+              style={{ textAlign: "right", padding: "0 10rem" }}
+            >
               <br></br>
               <div
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  alignItems: "flex-end",
+                  alignItems: "flex-start",
                 }}
               >
                 <div
@@ -217,9 +219,6 @@ const RightSection: React.FC<RightSectionProps> = ({ selectedSessionId }) => {
                     justifyContent: "flex-end",
                   }}
                 >
-                  <span style={{ marginRight: "5px", fontWeight: "bold" }}>
-                    {message.type === "user" ? "أنت" : "Modon GPT"}
-                  </span>
                   {message.type !== "user" ? (
                     <span>
                       <img
@@ -233,15 +232,18 @@ const RightSection: React.FC<RightSectionProps> = ({ selectedSessionId }) => {
                       <img
                         src="/usl.jpg"
                         alt="Logo"
-                        style={{ width: "30px", marginLeft: "5px" }}
+                        style={{ width: "30px", marginInlineEnd: "5px" }}
                       />
                     </span>
                   )}
+                  <span style={{ marginRight: "5px", fontWeight: "bold" }}>
+                    {message.type === "user" ? "أنت" : "Modon GPT"}
+                  </span>
                 </div>
                 <div
                   style={{
-                    textAlign: "left",
-                    marginRight: "30px",
+                    textAlign: "start",
+                    marginInlineEnd: "30px",
                   }}
                   className={`content-item ${
                     message.type === "user" ? "user-message" : "fake-response"
