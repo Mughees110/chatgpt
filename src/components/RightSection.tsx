@@ -84,8 +84,24 @@ const RightSection: React.FC<RightSectionProps> = ({ selectedSessionId }) => {
         ]);
         setLoading(true);
 
-        const fakeResponse =
-          "يمكن أن ترتكب  الأخطاء. تحقق من المعلومات الهامة. يمكن أن ترتكب  الأخطاء. تحقق من المعلومات الهامة.";
+        //const fakeResponse =
+        //  "يمكن أن ترتكب  الأخطاء. تحقق من المعلومات الهامة. يمكن أن ترتكب  الأخطاء. تحقق من المعلومات الهامة.";
+        const url = "http://localhost:5000/api/chat";
+        const data = { input: userMessage };
+        const responseB = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const resultP = await responseB.json();
+        const fakeResponse = resultP.response;
 
         const response2 = await fetch("http://localhost:5000/api/messages", {
           method: "POST",

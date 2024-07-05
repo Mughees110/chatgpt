@@ -153,3 +153,16 @@ app.post("/api/sessions", async (req, res) => {
     res.status(500).json({ error: "Failed to create session" });
   }
 });
+app.post("/api/chat", async (req, res) => {
+  try {
+    res
+      .status(201)
+      .json({
+        response:
+          "يمكن أن ترتكب  الأخطاء. تحقق من المعلومات الهامة. يمكن أن ترتكب  الأخطاء. تحقق من المعلومات الهامة.",
+      });
+  } catch (error) {
+    console.error("Error creating session:", error);
+    res.status(500).json({ error: "Failed to create session" });
+  }
+});

@@ -203,7 +203,7 @@ const LeftSection: React.FC<LeftSectionProps> = ({
                 session.message && (
                   <div
                     key={session._id}
-                    className="session-item noto-nastaliq-urdu-chatgpt"
+                    className="session-item"
                     onClick={() => setSelectedSessionId(session._id)}
                   >
                     <div className="session-sub-item">{session.message}</div>
@@ -222,7 +222,7 @@ const LeftSection: React.FC<LeftSectionProps> = ({
                 session.message && (
                   <div
                     key={session._id}
-                    className="session-item noto-nastaliq-urdu-chatgpt"
+                    className="session-item"
                     onClick={() => setSelectedSessionId(session._id)}
                   >
                     <div className="session-sub-item noto-nastaliq-urdu-chatgpt">
