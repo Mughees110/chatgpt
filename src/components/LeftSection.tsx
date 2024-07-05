@@ -174,7 +174,7 @@ const LeftSection: React.FC<LeftSectionProps> = ({
             <img
               src="/logo.jpg"
               alt="Logo"
-              style={{ width: "1.5rem", height: "1.5rem" }}
+              style={{ width: "4.5rem", height: "4.5rem" }}
             />
           </span>
         </div>
@@ -254,9 +254,9 @@ const LeftSection: React.FC<LeftSectionProps> = ({
         ))}
         {isLoading && <p>Loading...</p>}
         <div className="load-more" style={{ textAlign: "right" }}>
-          <p onClick={loadMore} className="load-more-text">
+          <h5 onClick={loadMore} className="time">
             تحميل المزيد
-          </p>
+          </h5>
         </div>
       </div>
       <div className="bottom-container">
