@@ -86,7 +86,7 @@ const RightSection: React.FC<RightSectionProps> = ({ selectedSessionId }) => {
 
         //const fakeResponse =
         //  "يمكن أن ترتكب  الأخطاء. تحقق من المعلومات الهامة. يمكن أن ترتكب  الأخطاء. تحقق من المعلومات الهامة.";
-        const url = "http://localhost:5000/api/chat";
+        const url = "http://localhost:5001/api/chat";
         const data = { input: userMessage };
         const responseB = await fetch(url, {
           method: "POST",
