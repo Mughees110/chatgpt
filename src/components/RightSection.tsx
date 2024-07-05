@@ -31,6 +31,9 @@ const RightSection: React.FC<RightSectionProps> = ({ selectedSessionId }) => {
       }
     }
   };
+  const delay = (ms: number): Promise<void> => {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  };
 
   const handleSubmit = async (
     event: React.FormEvent<HTMLFormElement> | KeyboardEvent<HTMLTextAreaElement>
@@ -83,6 +86,7 @@ const RightSection: React.FC<RightSectionProps> = ({ selectedSessionId }) => {
           { text: userMessage, type: "user", _id: messageId },
         ]);
         setLoading(true);
+        //await delay(5000);
 
         //const fakeResponse =
         //  "يمكن أن ترتكب  الأخطاء. تحقق من المعلومات الهامة. يمكن أن ترتكب  الأخطاء. تحقق من المعلومات الهامة.";
@@ -194,7 +198,7 @@ const RightSection: React.FC<RightSectionProps> = ({ selectedSessionId }) => {
       scrollableContentRef.current.scrollTop =
         scrollableContentRef.current.scrollHeight;
     }
-  }, [messages]);
+  }, [messages, loading]);
 
   return (
     <div className="right-section">
@@ -277,8 +281,8 @@ const RightSection: React.FC<RightSectionProps> = ({ selectedSessionId }) => {
           ))
         )}
         {loading && (
-          <div className="loading-indicator">
-            <p>Loading...</p>
+          <div style={{ marginRight: "170px" }}>
+            <p>تحميل...</p>
           </div>
         )}
       </div>
