@@ -79,7 +79,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 0rem;
+  padding: 0;
 }
 
 .logout-button {
@@ -88,6 +88,7 @@
 .icon-header {
   display: flex;
   align-items: center;
+  width: 100%;
 }
 .icon-md {
   flex-shrink: 0;
@@ -104,6 +105,7 @@
 
 .logo-span {
   text-align: center;
+  width: 100%;
 }
 
 .session-item {

@@ -153,7 +153,7 @@ const LeftSection: React.FC<LeftSectionProps> = ({
     <div className={`left-section ${isOpen ? "open" : ""}`}>
       <div className="svg-container">
         <svg
-          style={{ position: "absolute", top: "1.5rem", left: "0.5rem" }}
+          style={{ position: "absolute", top: "1rem", left: "1rem" }}
           onClick={createSession}
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -172,7 +172,7 @@ const LeftSection: React.FC<LeftSectionProps> = ({
             <img
               src="/newl.jpg"
               alt="Logo"
-              style={{ width: "100%", height: "auto" }}
+              style={{ width: "100%", height: "auto", objectFit: "cover" }}
             />
           </span>
         </div>
