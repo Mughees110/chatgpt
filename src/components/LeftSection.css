@@ -34,7 +34,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   padding: 0.5rem 1rem;
-  font-size: 0.875rem;
+  font-size: 0.675rem;
 }
 
 .bottom-container {
@@ -46,6 +46,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 13px;
 }
 
 .time {
