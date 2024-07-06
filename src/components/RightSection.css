@@ -40,7 +40,7 @@
   flex-grow: 1;
   overflow-y: auto;
   justify-content: center;
-  padding: 20px;
+  padding: 20px 0px;
   background-color: #fff;
   display: flex;
   flex-direction: column;

@@ -228,8 +228,7 @@ const RightSection: React.FC<RightSectionProps> = ({ selectedSessionId }) => {
               <div
                 style={{
                   display: "flex",
-                  flexDirection: "column",
-                  alignItems: "flex-start",
+                  alignItems: "center",
                 }}
               >
                 <div
@@ -256,14 +255,10 @@ const RightSection: React.FC<RightSectionProps> = ({ selectedSessionId }) => {
                       />
                     </span>
                   )}
-                  <span style={{ marginRight: "5px", fontWeight: "bold" }}>
-                    {message.type === "user" ? "أنت" : "Modon GPT"}
-                  </span>
                 </div>
                 <div
                   style={{
                     textAlign: "start",
-                    marginInlineEnd: "30px",
                   }}
                   className={`content-item ${
                     message.type === "user" ? "user-message" : "fake-response"

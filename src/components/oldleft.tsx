@@ -153,7 +153,7 @@ const LeftSection: React.FC<LeftSectionProps> = ({
     <div className={`left-section ${isOpen ? "open" : ""}`}>
       <div className="svg-container">
         <svg
-          style={{ position: "absolute", top: "1.5rem", left: "0.5rem" }}
+          style={{ position: "absolute", top: "17px" }}
           onClick={createSession}
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -223,7 +223,9 @@ const LeftSection: React.FC<LeftSectionProps> = ({
                     className="session-item"
                     onClick={() => setSelectedSessionId(session._id)}
                   >
-                    <div className="session-sub-item">{session.message}</div>
+                    <div className="session-sub-item noto-nastaliq-urdu-chatgpt">
+                      {session.message}
+                    </div>
                   </div>
                 )
             )}
