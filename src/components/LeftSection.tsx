@@ -265,7 +265,7 @@ const LeftSection: React.FC<LeftSectionProps> = ({
       </div>
       <div className="bottom-container">
         <p className="email-text">
-          {localStorage.getItem("email")} : مستخدم مسجل الدخول
+          <i>{localStorage.getItem("email")} : مستخدم مسجل الدخول</i>
         </p>
         <button className="logout-button" onClick={handleLogout}>
           Logout
